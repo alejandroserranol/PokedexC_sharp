@@ -60,6 +60,29 @@ namespace PokedexC_sharp
             }
         }
 
-
+        public String actualizaPokemons(String id, String dato)
+        {
+            try
+            {
+                conexion.Open();
+                MySqlCommand consulta = new MySqlCommand("UPDATE pokemon SET nombre = '" + dato + "' WHERE id = '" + id + "'", conexion);
+                MySqlDataReader resultado = consulta.ExecuteReader();
+                String mensaje;
+                if(resultado.RecordsAffected == 1)
+                {
+                    mensaje = "Actualizado correctamente";
+                }
+                else
+                {
+                    mensaje = "Error al actualizar el nombre del pokemon";
+                }
+                conexion.Close();
+                return mensaje;
+            }
+            catch (MySqlException e)
+            {
+                throw e;
+            }
+        }
     }
 }
