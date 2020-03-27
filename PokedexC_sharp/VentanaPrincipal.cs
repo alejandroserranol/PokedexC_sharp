@@ -21,6 +21,7 @@ namespace PokedexC_sharp
         public VentanaPrincipal()
         {
             InitializeComponent();
+            dataGridView1.DataSource = miConexion.getTodosPokemons();
         }
 
         private Image convierteBlobAImagen(byte[] img)

@@ -42,12 +42,12 @@ namespace PokedexC_sharp
             }
         }
 
-        public DataTable getTodosPokemons(int id)
+        public DataTable getTodosPokemons()
         {
             try
             {
                 conexion.Open();
-                MySqlCommand consulta = new MySqlCommand("SELECT * FROM pokemon ", conexion);
+                MySqlCommand consulta = new MySqlCommand("SELECT nombre, especie FROM pokemon ", conexion);
                 MySqlDataReader resultado = consulta.ExecuteReader();
                 DataTable pokemons = new DataTable();
                 pokemons.Load(resultado);
