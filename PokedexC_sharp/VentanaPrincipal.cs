@@ -22,6 +22,8 @@ namespace PokedexC_sharp
         {
             InitializeComponent();
             dataGridView1.DataSource = miConexion.getTodosPokemons();
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
         }
 
         private Image convierteBlobAImagen(byte[] img)
@@ -55,6 +57,12 @@ namespace PokedexC_sharp
             Ventana2 v = new Ventana2();
             v.cambiaNombrePokemon("Bulbasaur");
             v.Show();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            nombrePokemon.Text = dataGridView1.Rows[e.RowIndex].Cells["nombre"].Value.ToString();
+            pictureBox1.Image = convierteBlobAImagen((byte[])dataGridView1.Rows[e.RowIndex].Cells["imagen"].Value);
         }
     }
 }
